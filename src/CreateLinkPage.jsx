@@ -36,7 +36,7 @@ function CreateLinkPage() {
       //on submit it will proceess the data and create a object in api
 
       try {
-        const createLink = await axios.post("http://localhost:3005/urlShort/create-link", values, {
+        const createLink = await axios.post("https://url-shortner-task-2.onrender.com//urlShort/create-link", values, {
           headers: {
             "authorization": localStorage.getItem("token")
           }
@@ -63,7 +63,7 @@ function CreateLinkPage() {
 
 const getDta = async()=>{
 
-  const linkData = await  axios.get("http://localhost:3005/urlShort/link");
+  const linkData = await  axios.get("https://url-shortner-task-2.onrender.com//urlShort/link");
   console.log(linkData.data)
   setDetail( linkData.data);
 
@@ -107,7 +107,7 @@ getDta()
         </div>
       </div>
       <div className='row'>
-        
+
     {   linkDetail.map((link,index)=>{
       return  <div class="card" style={{ width: "18rem" }} key={index}>
           <div class="card-body">
