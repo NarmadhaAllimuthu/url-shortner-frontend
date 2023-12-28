@@ -51,7 +51,7 @@ const navigate =useNavigate();
             //on submit it will proceess the data and create a object in api
 
             try {
-                const authorData = await axios.post("https://url-shortner-task-2.onrender.com//users/register", values);
+                const authorData = await axios.post("https://url-shortner-task-2.onrender.com/users/register", values);
                 alert("Registered Data Posted successfully !");
                 navigate("/login");
                 formik.handleReset();

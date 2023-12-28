@@ -38,7 +38,7 @@ const navigate = useNavigate();
             //on submit it will proceess the data and create a object in api
 
             try {
-                const authorData = await axios.post("https://url-shortner-task-2.onrender.com//users/login", values);
+                const authorData = await axios.post("https://url-shortner-task-2.onrender.com/users/login", values);
                 localStorage.setItem("token",authorData.data.token);
                 alert("Logined successfully !");
                 navigate("/portal/create-link");

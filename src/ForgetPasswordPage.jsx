@@ -21,7 +21,7 @@ errors.emailId ="Please enter emailId"
             },
             onSubmit: async (values) => {
                 try {
-                     await axios.post("https://url-shortner-task-2.onrender.com//forget-password",values);
+                     await axios.post("https://url-shortner-task-2.onrender.com/forget-password",values);
                    alert("Password Reset Link has be send to your mail !!")
 
                 } catch(error) {
