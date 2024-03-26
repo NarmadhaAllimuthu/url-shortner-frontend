@@ -110,13 +110,12 @@ function Nav() {
                     </div>
                 </li>
 
-
                 <li className="nav-item dropdown no-arrow mx-1">
                     <button
                         className="btn btn-logout"
                         id="messagesDropdown"
                         role="button"
-                        style={{width:"55px",height:"45px"}}
+                        style={{ width: "55px", height: "45px" }}
                         aria-haspopup="true"
                         aria-expanded="false"
                         onClick={handleLogOut}

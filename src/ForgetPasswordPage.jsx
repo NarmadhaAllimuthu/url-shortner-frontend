@@ -1,10 +1,12 @@
+// import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import axios from 'axios';
 
 
 function ForgetPasswordPage() {
+    const navigate = useNavigate();
 
     const formik = useFormik(
         {
@@ -21,11 +23,14 @@ errors.emailId ="Please enter emailId"
             },
             onSubmit: async (values) => {
                 try {
-                     await axios.post("https://url-shortner-task-2.onrender.com/forget-password",values);
+                    // console.log(values.emailId)
+                  const getRes=   await axios.get(`https://url-shortner-task-2.onrender.com/users/forgetPassword/checkEmail/${values.emailId}`,values);
                    alert("Password Reset Link has be send to your mail !!")
+                //    console.log()
+                  navigate(`/reset-password/${values.emailId}`)
 
                 } catch(error) {
-                    console.log("error",error);
+                    console.log("error in forget password",error);
                     alert("Something went wrong. Please try again later.");
 
                 }

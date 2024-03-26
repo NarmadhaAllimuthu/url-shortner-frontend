@@ -2,9 +2,11 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { signInWithGoogle } from './firebase/firebase';
 
 function LoginPage() {
-const navigate = useNavigate();
+
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -38,8 +40,9 @@ const navigate = useNavigate();
             //on submit it will proceess the data and create a object in api
 
             try {
+                // https://url-shortner-task-2.onrender.com
                 const authorData = await axios.post("https://url-shortner-task-2.onrender.com/users/login", values);
-                localStorage.setItem("token",authorData.data.token);
+                localStorage.setItem("token", authorData.data.token);
                 alert("Logined successfully !");
                 navigate("/portal/create-link");
                 formik.handleReset();
@@ -56,7 +59,31 @@ const navigate = useNavigate();
         }
     })
 
+    let triggerGoogleLogin = async () => {
+        try {
+            const { user } = await signInWithGoogle();
+            // console.log(user.accessToken);
+            console.log(user);
+            const popupUrl = user.url;
+            const popupName = user.displayName;
+            const popupFeatures = 'width=600,height=400';
 
+            // Open the popup
+       const   popupWindow=  window.open(popupUrl, popupName, popupFeatures);
+            // window.open(user);
+            // const closePopup = () => {
+            //     if (popupWindow) {
+            //         popupWindow.close();
+            //     }
+            // };
+        } catch (error) {
+            console.log("Error during login ", error);
+        }
+      
+    }
+
+
+   
 
     return (
 
@@ -66,7 +93,6 @@ const navigate = useNavigate();
             <div class="row justify-content-center">
 
                 <div class="col-xl-10 col-lg-12 col-md-9">
-
                     <div class="card o-hidden border-0 shadow-lg my-5">
                         <div class="card-body p-0">
 
@@ -77,7 +103,9 @@ const navigate = useNavigate();
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                         </div>
-                                        <form class="user" onSubmit={formik.handleSubmit}>
+                                        <form class="user" 
+                                        // onSubmit={formik.handleSubmit}
+                                        onSubmit={(event) => { event.preventDefault(); formik.handleSubmit(); }}>
                                             <div class="form-group">
                                                 <input type="email"
                                                     class="form-control form-control-user"
@@ -118,9 +146,10 @@ const navigate = useNavigate();
                                                 Login
                                             </button>
                                             <hr />
-                                            <a href="index.html" class="btn btn-google btn-danger btn-user btn-block">
+                                            {/* <a href="index.html" class="btn btn-google btn-danger btn-user btn-block">
                                                 <i class="fab fa-google fa-fw"></i> Login with Google
-                                            </a>
+                                            </a> */}
+                                            <button onClick={triggerGoogleLogin} type='submit' class="btn btn-google btn-danger btn-user btn-block">Login with Google</button>
                                             <a href="index.html" class="btn btn-facebook btn-warning btn-user btn-block">
                                                 <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                             </a>
