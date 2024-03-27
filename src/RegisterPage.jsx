@@ -163,13 +163,13 @@ const navigate =useNavigate();
                                         </button>
 
                                     {/* </Link> */}
-                                    <hr />
+                                    {/* <hr />
                                     <a href="index.html" className="btn btn-google btn-danger btn-user btn-block">
                                         <i className="fab fa-google fa-fw"></i> Register with Google
                                     </a>
                                     <a href="index.html" className="btn btn-facebook btn-warning btn-user btn-block">
                                         <i className="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                    </a>
+                                    </a> */}
                                 </form>
                                 <hr />
                                 <div className="text-center">

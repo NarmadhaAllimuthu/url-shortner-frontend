@@ -145,21 +145,21 @@ function LoginPage() {
                                             <button type='submit' href="index.html" class="btn btn-primary btn-user btn-block">
                                                 Login
                                             </button>
-                                            <hr />
+                                            {/* <hr /> */}
                                             {/* <a href="index.html" class="btn btn-google btn-danger btn-user btn-block">
                                                 <i class="fab fa-google fa-fw"></i> Login with Google
                                             </a> */}
-                                            <button onClick={triggerGoogleLogin} type='submit' class="btn btn-google btn-danger btn-user btn-block">Login with Google</button>
+                                            {/* <button onClick={triggerGoogleLogin} type='submit' class="btn btn-google btn-danger btn-user btn-block">Login with Google</button>
                                             <a href="index.html" class="btn btn-facebook btn-warning btn-user btn-block">
                                                 <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                            </a>
+                                            </a> */}
                                         </form>
                                         <hr />
                                         <div class="text-center">
                                             <Link class="small" to={"/forget-password"} >Forgot Password?</Link>
                                         </div>
                                         <div class="text-center">
-                                            <a class="small" href="register.html">Create an Account!</a>
+                                           <Link class="small" to={"/"} >Create an Account!</Link>
                                         </div>
                                     </div>
                                 </div>
